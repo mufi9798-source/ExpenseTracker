@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">₹</div>
+            <div>
+                <h1>Expense Tracker</h1>
+                <p>Manage your money wisely</p>
+            </div>
+        </div>
+        <span class="header-label">PERSONAL FINANCE</span>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">YOUR FINANCIAL OVERVIEW</p>
+                <h2>Welcome back!</h2>
+                <p class="subtitle">Track your income and expenses in one place.</p>
+            </div>
+            <div class="today">
+                <span>Today's date</span>
+                <strong id="todayDate">--</strong>
+            </div>
+        </section>
+
+        <section class="summary-grid" aria-label="Financial summary">
+            <article class="summary-card balance-card">
+                <div class="card-heading">
+                    <span class="card-label">Total Balance</span>
+                    <span class="card-icon">₹</span>
+                </div>
+                <h3 id="balance">₹0.00</h3>
+                <p>Income minus expenses</p>
+            </article>
+
+            <article class="summary-card income-card">
+                <div class="card-heading">
+                    <span class="card-label">Total Income</span>
+                    <span class="card-icon">↗</span>
+                </div>
+                <h3 id="income">₹0.00</h3>
+                <p>Money received</p>
+            </article>
+
+            <article class="summary-card expense-card">
+                <div class="card-heading">
+                    <span class="card-label">Total Expenses</span>
+                    <span class="card-icon">↘</span>
+                </div>
+                <h3 id="expense">₹0.00</h3>
+                <p>Money spent</p>
+            </article>
+        </section>
+
+        <div id="statusMessage" class="status-message"
+             role="status" aria-live="polite" hidden></div>
+
+        <section class="content-grid">
+            <section class="panel form-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">NEW RECORD</p>
+                        <h2>Add Transaction</h2>
+                    </div>
+                    <span class="heading-icon">＋</span>
+                </div>
+
+                <form id="transactionForm">
+                    <div class="form-group">
+                        <label for="type">Transaction Type</label>
+                        <select id="type" name="type" required>
+                            <option value="EXPENSE">Expense</option>
+                            <option value="INCOME">Income</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Allowance">Allowance</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Food">Food</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Education">Education</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Health">Health</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" name="amount"
+                               min="0.01" max="99999999.99"
+                               step="0.01" placeholder="Enter amount" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description"
+                                  rows="3" maxlength="200"
+                                  placeholder="What was this transaction for?"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitButton" class="primary-button">
+                        + Add Transaction
+                    </button>
+                </form>
+            </section>
+
+            <section class="panel history-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">YOUR RECORDS</p>
+                        <h2>Transaction History</h2>
+                    </div>
+                    <span id="transactionCount" class="count-badge">0 records</span>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Details</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionList">
+                            <tr>
+                                <td colspan="4" class="empty-state">
+                                    Loading transactions...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="table-note">
+                    Your transactions are stored in your Oracle database.
+                </p>
+            </section>
+        </section>
+
+        <footer>
+            <p>Personal Expense Tracker · Manage today, plan tomorrow.</p>
+        </footer>
+    </main>
+</body>
+</html>
