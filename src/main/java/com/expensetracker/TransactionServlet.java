@@ -50,7 +50,6 @@ private static final String PASSWORD =
 
     return DriverManager.getConnection(URL, USER, PASSWORD);
 }
-    }
 
     // Send JSON responses to the browser.
     private void sendJson(
